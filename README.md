@@ -1,8 +1,11 @@
 <p align="center">
-  <h1 align="center">Desktop Fox</h1>
-  <p align="center">
-    A 3D AI companion on your macOS desktop. She chats, she reacts, she screams when you slap your MacBook.
-  </p>
+  <img src="profile.png" alt="Desktop Fox" width="500">
+</p>
+
+<h1 align="center">Desktop Fox</h1>
+
+<p align="center">
+  A 3D AI companion on your macOS desktop. She chats, she reacts, she screams when you slap your MacBook.
 </p>
 
 <p align="center">

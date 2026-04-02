@@ -11,6 +11,7 @@ desktop-pet/model/foxgirl_baked.usdz
 /tmp/
 .processed_messages.json
 *.png
+!profile.png
 Anime_fox_girl.usdz
 lil-agents/
 apple-silicon-accelerometer/
