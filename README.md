@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="profile.png" alt="Fox" width="500">
-</p>
-
 <h1 align="center">Fox</h1>
 
 <p align="center">
@@ -29,6 +25,10 @@ She does three things:
 3. **Talks to you** — not a dashboard, not a spreadsheet. A character you actually want to interact with
 
 Most finance tools give you data. Fox gives you someone who cares about your money.
+
+<p align="center">
+  <img src="profile.png" alt="Fox" width="500">
+</p>
 
 ## Features
 
