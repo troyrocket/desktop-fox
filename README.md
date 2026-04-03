@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="profile.png" alt="Fox" width="500">
+</p>
+
 <h1 align="center">Fox</h1>
 
 <p align="center">
