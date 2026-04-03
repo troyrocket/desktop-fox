@@ -34,51 +34,60 @@ Every action that touches your money requires your explicit approval. She'll sho
 
 ## Features
 
-### 3D Desktop Companion
+### 🖥 3D Desktop Companion
 
 Fox lives on your macOS desktop as a 3D character rendered in SceneKit. She floats transparently over your workspace — only she intercepts clicks, everything else passes through to your apps.
 
-- **Gesture Control** — drag to reposition, pinch to zoom, two-finger scroll to rotate her 360 degrees
-- **AI Chat** ��� double-click to open a chat terminal powered by Claude Code. She has her own personality, memory, and opinions about your spending habits
-- **Slap Reaction** — physically slap your MacBook and she reacts with anime voice effects and comic speech bubbles (uses Apple Silicon accelerometer via IOKit HID)
-- **Persona System** — her identity, personality, and preferences are defined in editable markdown files. Customize who she is and how she talks
+| | |
+|:--|:--|
+| **Gesture Control** | Drag to reposition, pinch to zoom, two-finger scroll to rotate 360° |
+| **AI Chat** | Double-click to open a chat terminal powered by Claude Code. She has her own personality, memory, and opinions about your spending habits |
+| **Slap Reaction** | Physically slap your MacBook and she reacts with anime voice effects and comic speech bubbles (Apple Silicon accelerometer via IOKit HID) |
+| **Persona System** | Her identity, personality, and preferences are editable markdown files. Customize who she is and how she talks |
 
-### Trader
+---
 
-Fox can trade on your behalf across prediction markets and stock brokerages. She uses Claude's Computer Use to navigate trading platforms in a real browser — the same way you would, but faster.
+### 📈 Trader
 
-- **Polymarket** — browse prediction markets, analyze odds and volume, place bets on outcomes. She reads the market page, recommends a position, and sets up the trade for your confirmation
-- **US Stocks** — search tickers, view stock details, place buy/sell orders through your brokerage account (Robinhood, Schwab, etc.)
-- **Smart Execution** — she picks entries, sets stops, and manages positions based on the current market context
-- **Daily Briefing** — a quick morning summary of what happened overnight, what your positions look like, and what she's planning next
-- **Always Asks First** — no trade goes through without your explicit "yes". She shows a screenshot of the order before every execution
+Fox trades on your behalf across prediction markets and stock brokerages. She uses Claude's Computer Use to navigate trading platforms in a real browser — the same way you would, but faster.
 
-### Spending Manager
+| | |
+|:--|:--|
+| **Polymarket** | Browse prediction markets, analyze odds and volume, place bets on outcomes. She reads the market page, recommends a position, and sets up the trade for your confirmation |
+| **US Stocks** | Search tickers, view stock details, place buy/sell orders through your brokerage (Robinhood, Schwab, etc.) |
+| **Smart Execution** | She picks entries, sets stops, and manages positions based on current market context |
+| **Daily Briefing** | A quick morning summary of what happened overnight, your positions, and what she's planning next |
+| **Always Asks First** | No trade goes through without your explicit "yes". She shows a screenshot of the order before every execution |
+
+---
+
+### 💸 Spending Manager
 
 Fox monitors your email for subscription charges and helps you cancel the ones you don't need. She connects to your inbox via AgentMail and uses browser automation to handle cancellation flows end-to-end.
 
-- **Email Monitoring** — forward subscription emails to `undercurrent-agent@agentmail.to` and Fox parses them automatically using Claude. She extracts service name, price, billing cycle, renewal date, and usage signals
-- **Smart Analysis** — for each subscription, she gives you a recommendation (cancel / keep / review) with a one-line reason. She considers how often you use the service, what you're paying, and whether there's a cheaper alternative
-- **Browser Automation** — when you decide to cancel, Fox opens the service's cancellation page and navigates the flow step by step. She fills forms, clicks through retention offers, and handles the multi-step flows that companies design to keep you subscribed
-- **Payment Management** — need to update your card on file? Fox can fill in payment information on subscription pages via browser automation
-- **Human in the Loop** — every destructive action (final cancel click, payment submission) requires your explicit approval. She takes a screenshot, describes what she's about to do, and waits for confirmation
+| | |
+|:--|:--|
+| **Email Monitoring** | Forward subscription emails to `undercurrent-agent@agentmail.to` — Fox parses them with Claude, extracting service name, price, billing cycle, renewal date, and usage signals |
+| **Smart Analysis** | For each subscription, she recommends cancel / keep / review with a one-line reason. She considers usage frequency, cost, and cheaper alternatives |
+| **Browser Automation** | When you cancel, Fox opens the cancellation page and navigates the flow step by step — filling forms, clicking through retention offers, handling multi-step dark patterns |
+| **Payment Management** | Need to update your card on file? Fox fills in payment info on subscription pages via browser automation |
+| **Human in the Loop** | Every destructive action requires your explicit approval. She screenshots, describes what she's about to do, and waits for confirmation |
+
+---
 
 ## How it Works
 
-Fox combines two systems:
+Fox combines two systems that talk to each other through Claude Code CLI:
 
-**1. Desktop Companion (Swift / macOS native)**
+| | Desktop Companion | Financial Agent |
+|:--|:--|:--|
+| **Language** | Swift | Python |
+| **What it does** | Renders 3D character, handles gestures, runs chat terminal | Reads emails, analyzes subscriptions, executes trades, controls browser |
+| **AI** | Claude Code CLI (chat + personality) | Claude API (tool-use loop + Computer Use) |
+| **Key tech** | SceneKit, AppKit, IOKit HID, AVFoundation | AgentMail, screencapture, cliclick |
+| **Role** | The face | The brain |
 
-A native macOS app that renders a 3D character on your desktop using SceneKit. The character has a built-in chat terminal that connects to Claude Code CLI. When you double-click her, you can ask her anything — check your subscriptions, place a trade, or just chat. Her personality is defined in editable markdown files under `persona/`.
-
-**2. Financial Agent (Python / Claude API)**
-
-A Python backend that handles the actual financial operations. It uses Claude's tool-use loop to decide what to do, then executes actions through:
-- **AgentMail** — for reading and parsing subscription emails
-- **Computer Use** — for controlling the browser to navigate trading platforms and subscription management pages
-- **Claude** — for analyzing subscriptions, making trade recommendations, and deciding next steps
-
-The two systems connect through Claude Code CLI — the desktop companion is the interface, the Python agent is the brain.
+**Flow:** You double-click Fox → chat terminal opens → you ask her to do something → Claude Code dispatches to the Python agent → agent takes action on your screen → Fox reports back.
 
 ## Getting Started
 
